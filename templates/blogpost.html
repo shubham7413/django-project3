@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}BLOG - blog{% endblock title %}
+{% block body %}
+
+<div class="container px-3">
+    <h3 class="my-3">{{blog.title}}</h3>
+    <p>{{blog.content|safe}}</p>
+</div>
+
+{% endblock body %}

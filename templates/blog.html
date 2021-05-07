@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}BLOG - blog{% endblock title %}
+{% block body %}
+
+<h3 class="my-3">Hello world</h3>
+{% for blog in blog %}
+<div class="container my-3 ">
+    
+    <div class="media">
+      <div class="media-body">
+        <h5 class="mt-0"><a href="/blogpost/{{blog.slug}}" class="text-dark">{{blog.title}}</a></h5>
+        <p class="my-3">{{blog.short_desc|slice:245}}.....</p>
+      </div>
+    </div>
+    <div class="btn btn-primary"><a href="/blogpost/{{blog.slug}}" class="text-dark">Read More....</a></div>
+    <br>
+</div>
+{% endfor %}
+
+  <div class="container my-3 py-3">
+  {% if prev %}
+    <a href="/blog?page={{prev}}"><button class="btn btn-primary text-light" >&laquo; Previous</button></a>
+  {% else %}
+    <a href="#" class="text-light"><button class="btn btn-primary disabled text-light" >&laquo; Previous</button></a>
+  {% endif %}
+
+
+  {% if nxt %}
+    <a href="/blog?page={{nxt}}" ><button class="btn btn-primary float-end text-light" >Next &raquo;</button></a>
+  {% else %}
+    <a href="#" class="text-light"><button class="btn btn-primary float-end disabled text-light" >Next &raquo;</button></a>
+  {% endif %}
+  </div>
+{% endblock body %}
